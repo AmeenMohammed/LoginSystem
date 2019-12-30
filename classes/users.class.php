@@ -1,6 +1,6 @@
 <?php
 
-    class dataBase extends Dbh{
+    class Users extends Dbh{
 
         public function create_user(&$userData){
             $sql = "SELECT idUsers FROM users where username=:username";

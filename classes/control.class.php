@@ -11,7 +11,7 @@
         }
 
         public static function login(){
-            $databaseObject = new dataBase();
+            $databaseObject = new Users();
             if(isset($_POST['sign'])){
                     $username = $_POST['username'];
                     $password = md5($_POST['password']);
@@ -28,7 +28,7 @@
 
         }
         public static function registration(){
-           $databaseObject = new dataBase();
+           $databaseObject = new Users();
             $error = array();
 
             if (isset($_POST['login'])){
@@ -97,13 +97,13 @@
         public static function settings(){
             session_start();
             if(isset($_GET['settings'])){
-            $databaseObject = new dataBase();
+            $databaseObject = new Users();
             echo $databaseObject->uesr_data($_SESSION['username']);
             $_GET['settings'] = 0;
             exit();
             }
             if(isset($_POST['set'])){
-                $databaseObject = new dataBase();
+                $databaseObject = new Users();
                 $flag = $databaseObject->update_user($_SESSION['username'], $_POST['username'], 
                 $_POST['age'], $_POST['password']);
                 if($flag == true){
@@ -112,7 +112,7 @@
                $_POST['set'] = 0;
             }
             if(isset($_POST['del'])){
-                $databaseObject = new dataBase();
+                $databaseObject = new Users();
                 $databaseObject->delete_user($_POST['username']);
                 session_destroy();
                 $_POST['del'] = 0;
